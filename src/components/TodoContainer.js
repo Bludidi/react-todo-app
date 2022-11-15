@@ -1,7 +1,9 @@
-/* eslint-disable */ 
+/* eslint-disable */
 import React from 'react';
 import TodosList from "./TodosList";
 import Header from "./Header";
+
+// State is added in the class
 
 class TodoContainer extends React.Component {
   state = {
@@ -22,13 +24,25 @@ class TodoContainer extends React.Component {
         completed: false
       }
     ]
-   };
+  };
+
+  // Handle changes from children
+
+  handleChange = (id) => {
+    console.log("clicked", id);
+  };
+
+  // Render UI in the DOM
+
   render() {
     return (
       <div>
         <Header />
-      <TodosList todos={this.state.todos} />
-    </div>
+        <TodosList
+          todos={this.state.todos}
+          handleChangeProps={this.handleChange}
+        />
+      </div>
     );
   }
 }
