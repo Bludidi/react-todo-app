@@ -2,6 +2,7 @@
 import React from 'react';
 import TodosList from "./TodosList";
 import Header from "./Header";
+import InputTodo from "./InputTodo";
 
 // State is added in the class
 
@@ -41,16 +42,27 @@ class TodoContainer extends React.Component {
       }),
     }));
   };
-  
+
   // Render UI in the DOM
+delTodo = id => {
+  this.setState({
+    todos: [
+      ...this.state.todos.filter(todo => {
+        return todo.id !== id;
+      })
+    ]
+  });
+};
 
   render() {
     return (
       <div>
         <Header />
+        <InputTodo />
         <TodosList
           todos={this.state.todos}
           handleChangeProps={this.handleChange}
+          deleteTodoProps={this.delTodo}
         />
       </div>
     );

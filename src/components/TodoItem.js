@@ -10,7 +10,12 @@ class TodoItem extends React.Component {
         onChange={() => this.props.handleChangeProps()}
         />
         {this.props.todo.title}
+        <button onClick={() => 
+        this.props.deleteTodoProps(this.props.todo.id)}>
+            Delete
+        </button>
         </li>
+        
   }
 }
 
